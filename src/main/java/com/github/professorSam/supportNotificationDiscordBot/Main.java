@@ -16,7 +16,7 @@ public class Main {
 				.login().join();
 		api.addListener(new PlayerJoinWaitingChannelEvent());
 		api.updateStatus(UserStatus.ONLINE);
-		api.updateActivity(ActivityType.CUSTOM, ":yum: Support!");
+		api.updateActivity(ActivityType.PLAYING, "😋 Support!");
 		System.out.println("Loaded!");
 	}
 	public static DiscordApi getApi() {
