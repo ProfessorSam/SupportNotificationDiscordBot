@@ -11,6 +11,7 @@ public class Settings {
 	private static String pingRole;
 	private static String notifyMessage;
 	private static String userNotifyMessage;
+	private static String noModOnline;
 	
 	public static void intialSettings() {
 		token = readStringFromFile("settings", "token.txt");
@@ -18,6 +19,7 @@ public class Settings {
 		pingRole = readStringFromFile("settings", "pingRole.txt");
 		notifyMessage = readStringFromFile("settings", "notifyMessage.txt");
 		userNotifyMessage = readStringFromFile("settings", "userNotifyMessage.txt");
+		noModOnline = readStringFromFile("settings", "noModOnline.txt");
 	}
 	
 	private static String readStringFromFile(String directory, String filename) {
@@ -50,5 +52,9 @@ public class Settings {
 
 	public static String getUserNotifyMessage() {
 		return userNotifyMessage;
+	}
+
+	public static String getNoModOnline() {
+		return noModOnline;
 	}
 }
