@@ -18,11 +18,18 @@ public class PlayerJoinWaitingChannelEvent implements ServerVoiceChannelMemberJo
 	public void onServerVoiceChannelMemberJoin(ServerVoiceChannelMemberJoinEvent event) {
 		if (event.getChannel().getId() == channelID) {
 			event.getUser().sendMessage(Settings.getUserNotifyMessage());
+			int messageCount = 0;
 			for (User mod : event.getServer().getRoleById(pingRole).get().getUsers()) {
 				if (mod.getStatus() == UserStatus.ONLINE) {
+					messageCount++ ;
 					EmbedBuilder embed = new EmbedBuilder().setTitle("Support").setDescription(Settings.getNotifyMessage()).setFooter("Made with ❤️ by ProfSam#3975").setColor(Color.RED);
 					new MessageBuilder().addEmbed(embed).append("User: " + event.getUser().getDisplayName(event.getServer())).send(mod);
 				}
+			}
+			if(messageCount == 0) {
+				new MessageBuilder()
+				.append(Settings.getNoModOnline())
+				.send(event.getUser()).thenAccept(message -> message.addReaction("😖"));
 			}
 
 			System.out.println("Waiting: " + event.getUser().getName().toString());
