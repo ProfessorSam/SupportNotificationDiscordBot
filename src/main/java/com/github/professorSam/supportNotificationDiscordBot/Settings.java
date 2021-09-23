@@ -10,13 +10,14 @@ public class Settings {
 	private static String waitingChannelID;
 	private static String pingRole;
 	private static String notifyMessage;
+	private static String userNotifyMessage;
 	
 	public static void intialSettings() {
 		token = readStringFromFile("settings", "token.txt");
 		waitingChannelID = readStringFromFile("settings",  "waitingChannelID.txt");
 		pingRole = readStringFromFile("settings", "pingRole.txt");
 		notifyMessage = readStringFromFile("settings", "notifyMessage.txt");
-		
+		userNotifyMessage = readStringFromFile("settings", "userNotifyMessage.txt");
 	}
 	
 	private static String readStringFromFile(String directory, String filename) {
@@ -45,5 +46,9 @@ public class Settings {
 
 	public static String getNotifyMessage() {
 		return notifyMessage;
+	}
+
+	public static String getUserNotifyMessage() {
+		return userNotifyMessage;
 	}
 }
